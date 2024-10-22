@@ -1,0 +1,802 @@
+//BASE DE DATOS DESNORMALIZADA
+// --------CREACIÓN DE COLECCIONES ------------
+
+db.createCollection("usuarios")
+db.createCollection("juegos")
+db.createCollection("publicaciones")
+db.createCollection("partidas")
+db.createCollection("comentarios")
+
+//---------INSERT DE USUARIOS---------
+
+db.usuarios.insertMany([
+	{
+		_id: "pepito123",
+		pais: "Argentina", 
+		nombre: "Pepe", 
+		email: "pepito123@gmail.com", 
+		puntos_xp: 1500
+	}, 
+	{
+		_id: "juancito129",
+		pais: "Brasil",  
+		nombreUsuario: "Juan", 
+		email: "juann@gmail.com", 
+		puntosXp: 450
+	}, 
+	{
+		_id: "nicohbr2",
+		pais: "Chile",  
+		nombreUsuario: "Nico", 
+		email: "hubernicolas110@gmail.com", 
+		puntosXp: 1195
+	}, 
+	{
+		_id: "sofibolea",
+		pais: "Uruguay",  
+		nombreUsuario: "Sofi", 
+		email: "sofia123@gmail.com", 
+		puntosXp: 3000
+	},
+	{
+		_id: "polbiancu", 
+		nombreUsuario: "Pablo",
+		pais: "Argentina",  
+		email: "pablo123@gmail.com", 
+		puntosXp: 4500
+	}
+])
+
+//---------INSERT DE PUBLICACIONES---------
+
+db.publicaciones.insertMany([
+{
+  "_id": "P001",
+  "contenido": "The Witcher 3: Wild Hunt tiene una de las mejores historias que he jugado. Las decisiones realmente importan y el mundo abierto es increíble.",
+  "usuario": {
+    "_id": "pepito123",
+    "email": "pepito123@gmail.com",
+    "puntosXp": 1500,
+    "nombreUsuario": "Pepe"
+  },
+  "fecha": {
+    "$date": "2024-11-15T09:30:00.000Z"
+  }
+},
+{
+  "_id": "P002",
+  "contenido": "Assassin's Creed Valhalla me ha encantado por su ambientación y el sistema de combate. Las batallas navales también están muy bien logradas.",
+  "usuario": {
+    "_id": "sofibolea",
+    "email": "sofia123@gmail.com",
+    "puntosXp": 3000,
+    "nombreUsuario": "Sofi"
+  },
+  "fecha": {
+    "$date": "2025-01-20T14:45:00.000Z"
+  }
+},
+{
+  "_id": "P003",
+  "contenido": "Mortal Kombat 11 tiene unos gráficos impresionantes y los movimientos especiales son brutales. Es uno de los mejores juegos de peleas que he jugado.",
+  "usuario": {
+    "_id": "polbiancu",
+    "nombreUsuario": "Pablo",
+    "email": "pablo123@gmail.com",
+    "puntosXp": 4500
+  },
+  "fecha": {
+    "$date": "2023-12-25T18:00:00.000Z"
+  }
+},
+{
+  "_id": "P004",
+  "contenido": "Minecraft sigue siendo uno de mis juegos favoritos, la libertad de creación que ofrece es insuperable, siempre puedo construir lo que se me ocurra.",
+  "usuario": {
+    "_id": "nicohbr2",
+    "nombreUsuario": "Nico",
+    "email": "hubernicolas110@gmail.com",
+    "puntosXp": 1195
+  },
+  "fecha": {
+    "$date": "2024-03-08T11:15:00.000Z"
+  }
+},
+{
+  "_id": "P005",
+  "contenido": "Red Dead Redemption 2 es una obra maestra. El detalle en el mundo y los personajes es increíble. Cada misión se siente única.",
+  "usuario": {
+    "_id": "juancito129",
+    "nombreUsuario": "Juan",
+    "email": "juann@gmail.com",
+    "puntosXp": 450
+  },
+  "fecha": {
+    "$date": "2024-07-04T22:00:00.000Z"
+  }
+}
+])
+
+//---------INSERT DE PARTIDAS---------
+
+db.partidas.insertMany([
+{
+  "_id": "P001",
+  "duración": 120,
+  "juego": {
+    "_id": "CODBO3",
+    "nombre": "Call Of Duty: Black Ops 3",
+  },
+  "creador": {
+    "_id": "pepito123",
+    "nombreUsuario": "Pepe",
+    "email": "pepito123@gmail.com",
+    "puntosXp": 1500
+  },
+  "invitados": [
+    "sofibolea",
+    "polbiancu"
+  ],
+  "fecha": {
+    "$date": "2023-11-05T08:00:00.000Z"
+  }
+},
+{
+  "_id": "P002",
+  "duración": 90,
+  "juego": {
+    "_id": "RDR2",
+    "nombre": "Red Dead Redemption 2",
+    },
+  "creador": {
+    "_id": "pepito123",
+    "nombreUsuario": "Pepe",
+    "email": "pepito123@gmail.com",
+    "puntosXp": 1500
+  },
+  "invitados": [
+    "juancito129",
+    "nicohbr2"
+  ],
+  "fecha": {
+    "$date": "2023-12-12T14:30:00.000Z"
+  }
+},
+{
+  "_id": "P003",
+  "duración": 180,
+  "juego": {
+    "_id": "MC",
+    "nombre": "Minecraft",
+    },
+  "creador": {
+    "_id": "pepito123",
+    "nombreUsuario": "Pepe",
+    "email": "pepito123@gmail.com",
+    "puntosXp": 1500
+  },
+  "invitados": [
+    "polbiancu",
+    "juancito129",
+    "sofibolea"
+  ],
+  "fecha": {
+    "$date": "2024-01-03T09:15:00.000Z"
+  }
+},
+{
+  "_id": "P004",
+  "duración": 45,
+  "juego": {
+    "_id": "MK11",
+    "nombre": "Mortal Kombat 11",
+    },
+  "creador": {
+    "_id": "sofibolea",
+    "nombreUsuario": "Sofi",
+    "email": "sofia123@gmail.com",
+    "puntosXp": 3000
+  },
+  "invitados": [
+    "nicohbr2",
+    "pepito123",
+    "polbiancu"
+  ],
+  "fecha": {
+    "$date": "2024-02-20T18:45:00.000Z"
+  }
+},
+{
+  "_id": "P005",
+  "duración": 150,
+  "juego": {
+    "_id": "ACV",
+    "nombre": "Assassin's Creed Valhalla",
+  },
+  "creador": {
+    "_id": "sofibolea",
+    "nombreUsuario": "Sofi",
+    "email": "sofia123@gmail.com",
+    "puntosXp": 3000
+  },
+  "invitados": [
+    "juancito129",
+    "pepito123"
+  ],
+  "fecha": {
+    "$date": "2023-10-30T11:00:00.000Z"
+  }
+},
+{
+  "_id": "P006",
+  "duración": 200,
+  "juego": {
+    "_id": "W3",
+    "nombre": "The Witcher 3: Wild Hunt",
+   },
+  "creador": {
+    "_id": "polbiancu",
+    "nombreUsuario": "Pablo",
+    "email": "pablo123@gmail.com",
+    "puntosXp": 4500
+  },
+  "invitados": [
+    "nicohbr2",
+    "juancito129"
+  ],
+  "fecha": {
+    "$date": "2024-03-15T07:50:00.000Z"
+  }
+},
+{
+  "_id": "P007",
+  "duración": 60,
+  "juego": {
+    "_id": "CODBO3",
+    "nombre": "Call Of Duty: Black Ops 3",
+  },
+  "creador": {
+    "_id": "sofibolea",
+    "nombreUsuario": "Sofi",
+    "email": "sofia123@gmail.com",
+    "puntosXp": 3000
+  },
+  "invitados": [
+    "pepito123",
+    "nicohbr2"
+  ],
+  "fecha": {
+    "$date": "2024-04-01T22:10:00.000Z"
+  }
+},
+{
+  "_id": "P008",
+  "duración": 110,
+  "juego": {
+    "_id": "RDR2",
+    "nombre": "Red Dead Redemption 2",
+  },
+  "creador": {
+    "_id": "polbiancu",
+    "nombreUsuario": "Pablo",
+    "email": "pablo123@gmail.com",
+    "puntosXp": 4500
+  },
+  "invitados": [
+    "juancito129",
+    "sofibolea"
+  ],
+  "fecha": {
+    "$date": "2024-05-25T13:05:00.000Z"
+  }
+},
+{
+  "_id": "P009",
+  "duración": 75,
+  "juego": {
+    "_id": "MC",
+    "nombre": "Minecraft",
+  },
+  "creador": {
+    "_id": "nicohbr2",
+    "nombreUsuario": "Nico",
+    "email": "hubernicolas110@gmail.com",
+    "puntosXp": 1195
+  },
+  "invitados": [
+    "pepito123",
+    "polbiancu"
+  ],
+  "fecha": {
+    "$date": "2023-12-25T17:30:00.000Z"
+  }
+},
+{
+  "_id": "P010",
+  "duración": 50,
+  "juego": {
+    "_id": "MK11",
+    "nombre": "Mortal Kombat 11",
+  },
+  "creador": {
+    "_id": "juancito129",
+    "nombreUsuario": "Juan",
+    "email": "juann@gmail.com",
+    "puntosXp": 450
+  },
+  "invitados": [
+    "sofibolea",
+    "pepito123"
+  ],
+  "fecha": {
+    "$date": "2024-06-10T20:20:00.000Z"
+  }
+},
+{
+  "_id": "P011",
+  "duración": 130,
+  "juego": {
+    "_id": "ACV",
+    "nombre": "Assassin's Creed Valhalla",
+  },
+  "creador": {
+    "_id": "nicohbr2",
+    "nombreUsuario": "Nico",
+    "email": "hubernicolas110@gmail.com",
+    "puntosXp": 1195
+  },
+  "invitados": [
+    "polbiancu",
+    "juancito129"
+  ],
+  "fecha": {
+    "$date": "2023-11-17T16:40:00.000Z"
+  }
+},
+{
+  "_id": "P012",
+  "duración": 165,
+  "juego": {
+    "_id": "W3",
+    "nombre": "The Witcher 3: Wild Hunt",
+  },
+  "creador": {
+    "_id": "nicohbr2",
+    "nombreUsuario": "Nico",
+    "email": "hubernicolas110@gmail.com",
+    "puntosXp": 1195
+  },
+  "invitados": [
+    "sofibolea",
+    "pepito123"
+  ],
+  "fecha": {
+    "$date": "2024-07-04T21:00:00.000Z"
+  }
+},
+{
+  "_id": "P013",
+  "duración": 95,
+  "juego": {
+    "_id": "CODBO3",
+    "nombre": "Call Of Duty: Black Ops 3",
+  },
+  "creador": {
+    "_id": "juancito129",
+    "nombreUsuario": "Juan",
+    "email": "juann@gmail.com",
+    "puntosXp": 450
+  },
+  "invitados": [
+    "polbiancu",
+    "sofibolea"
+  ],
+  "fecha": {
+    "$date": "2024-08-18T05:55:00.000Z"
+  }
+},
+{
+  "_id": "P014",
+  "duración": 140,
+  "juego": {
+    "_id": "RDR2",
+    "nombre": "Red Dead Redemption 2",
+  },
+  "creador": {
+    "_id": "polbiancu",
+    "nombreUsuario": "Pablo",
+    "email": "pablo123@gmail.com",
+    "puntosXp": 4500
+  },
+  "invitados": [
+    "pepito123",
+    "nicohbr2"
+  ],
+  "fecha": {
+    "$date": "2024-09-10T12:00:00.000Z"
+  }
+},
+{
+  "_id": "P015",
+  "duración": 80,
+  "juego": {
+    "_id": "MK11",
+    "nombre": "Mortal Kombat 11",
+  },
+  "creador": {
+    "_id": "juancito129",
+    "nombreUsuario": "Juan",
+    "email": "juann@gmail.com",
+    "puntosXp": 450
+  },
+  "invitados": [
+    "juancito129",
+    "sofibolea",
+    "pepito123"
+  ],
+  "fecha": {
+    "$date": "2024-10-22T23:30:00.000Z"
+  }
+}
+])
+
+//---------INSERT DE COMENTARIOS---------
+
+db.comentarios.insertMany([
+{
+  "_id": "C001",
+  "contenido": "Este juego es increíble, la historia me atrapó desde el principio.",
+  "publicacion": {
+    "_id": "P001",
+    "contenido": "The Witcher 3: Wild Hunt tiene una de las mejores historias que he jugado. Las decisiones realmente importan y el mundo abierto es increíble.",
+    "usuario": {
+      "_id": "pepito123",
+      "email": "pepito123@gmail.com",
+      "puntosXp": 1500,
+      "nombreUsuario": "Pepe"
+    }
+  },
+  "usuario": {
+    "_id": "pepito123",
+    "nombreUsuario": "Pepe",
+    "email": "pepito123@gmail.com",
+    "puntosXp": 1500
+  }
+},
+{
+  "_id": "C002",
+  "contenido": "Los gráficos son espectaculares, pero creo que la jugabilidad podría mejorar.",
+  "publicacion": {
+    "_id": "P002",
+    "contenido": "Assassin's Creed Valhalla me ha encantado por su ambientación y el sistema de combate. Las batallas navales también están muy bien logradas.",
+    "usuario": {
+      "_id": "sofibolea",
+      "email": "sofia123@gmail.com",
+      "puntosXp": 3000,
+      "nombreUsuario": "Sofi"
+    }
+  },
+  "usuario": {
+    "_id": "sofibolea",
+    "nombreUsuario": "Sofi",
+    "email": "sofia123@gmail.com",
+    "puntosXp": 3000
+  }
+},
+{
+  "_id": "C003",
+  "contenido": "Me gusta mucho el modo cooperativo, es muy entretenido jugar con amigos.",
+  "publicacion": {
+    "_id": "P004",
+    "contenido": "Minecraft sigue siendo uno de mis juegos favoritos, la libertad de creación que ofrece es insuperable, siempre puedo construir lo que se me ocurra.",
+    "usuario": {
+      "_id": "nicohbr2",
+      "nombreUsuario": "Nico",
+      "email": "hubernicolas110@gmail.com",
+      "puntosXp": 1195
+    }
+  },
+  "usuario": {
+    "_id": "polbiancu",
+    "nombreUsuario": "Pablo",
+    "email": "pablo123@gmail.com",
+    "puntosXp": 4500
+  }
+},
+{
+  "_id": "C004",
+  "contenido": "La cantidad de contenido es abrumadora, llevo horas y aún no termino todo.",
+  "publicacion": {
+    "_id": "P004",
+    "contenido": "Minecraft sigue siendo uno de mis juegos favoritos, la libertad de creación que ofrece es insuperable, siempre puedo construir lo que se me ocurra.",
+    "usuario": {
+      "_id": "nicohbr2",
+      "nombreUsuario": "Nico",
+      "email": "hubernicolas110@gmail.com",
+      "puntosXp": 1195
+    }
+  },
+  "usuario": {
+    "_id": "nicohbr2",
+    "nombreUsuario": "Nico",
+    "email": "hubernicolas110@gmail.com",
+    "puntosXp": 1195
+  }
+},
+{
+  "_id": "C005",
+  "contenido": "Siento que el sistema de combate no es tan intuitivo como debería ser.",
+  "usuario": {
+    "_id": "juancito129",
+    "nombreUsuario": "Juan",
+    "email": "juann@gmail.com",
+    "puntosXp": "450"
+  },
+  "publicacion": {
+    "_id": "P003",
+    "contenido": "Mortal Kombat 11 tiene unos gráficos impresionantes y los movimientos especiales son brutales. Es uno de los mejores juegos de peleas que he jugado.",
+    "usuario": {
+      "_id": "polbiancu",
+      "nombreUsuario": "Pablo",
+      "email": "pablo123@gmail.com",
+      "puntosXp": 4500
+    }
+  }
+},
+{
+  "_id": "C006",
+  "contenido": "El apartado sonoro es brutal, las melodías te sumergen totalmente en la acción.",
+  "usuario": {
+    "_id": "pepito123",
+    "nombre": "Pepe",
+    "email": "pepito123@gmail.com",
+    "puntos_xp": 1500
+  },
+  "publicacion": {
+    "_id": "P005",
+    "contenido": "Red Dead Redemption 2 es una obra maestra. El detalle en el mundo y los personajes es increíble. Cada misión se siente única.",
+    "usuario": {
+      "_id": "juancito129",
+      "nombreUsuario": "Juan",
+      "email": "juann@gmail.com",
+      "puntosXp": 450
+    }
+  }
+},
+{
+  "_id": "C007",
+  "contenido": "El modo historia es un poco corto, esperaba que durara más.",
+  "usuario": {
+    "_id": "sofibolea",
+    "nombreUsuario": "Sofi",
+    "email": "sofia123@gmail.com",
+    "puntosXp": 3000
+  },
+  "publicacion": {
+    "_id": "P001",
+    "contenido": "The Witcher 3: Wild Hunt tiene una de las mejores historias que he jugado. Las decisiones realmente importan y el mundo abierto es increíble.",
+    "usuario": {
+      "_id": "pepito123",
+      "email": "pepito123@gmail.com",
+      "puntosXp": 1500,
+      "nombreUsuario": "Pepe"
+    }
+  }
+},
+{
+  "_id": "C008",
+  "contenido": "Excelente optimización, corre perfecto en mi PC con especificaciones medias.",
+  "usuario": {
+    "_id": "polbiancu",
+    "nombreUsuario": "Pablo",
+    "email": "pablo123@gmail.com",
+    "puntosXp": 4500
+  },
+  "publicacion": {
+    "_id": "P004",
+    "contenido": "Minecraft sigue siendo uno de mis juegos favoritos, la libertad de creación que ofrece es insuperable, siempre puedo construir lo que se me ocurra.",
+    "usuario": {
+      "_id": "nicohbr2",
+      "nombreUsuario": "Nico",
+      "email": "hubernicolas110@gmail.com",
+      "puntosXp": 1195
+    }
+  }
+},
+{
+  "_id": "C008",
+  "contenido": "Excelente optimización, corre perfecto en mi PC con especificaciones medias.",
+  "usuario": {
+    "_id": "polbiancu",
+    "nombreUsuario": "Pablo",
+    "email": "pablo123@gmail.com",
+    "puntosXp": 4500
+  },
+  "publicacion": {
+    "_id": "P004",
+    "contenido": "Minecraft sigue siendo uno de mis juegos favoritos, la libertad de creación que ofrece es insuperable, siempre puedo construir lo que se me ocurra.",
+    "usuario": {
+      "_id": "nicohbr2",
+      "nombreUsuario": "Nico",
+      "email": "hubernicolas110@gmail.com",
+      "puntosXp": 1195
+    }
+  }
+},
+{
+  "_id": "C009",
+  "contenido": "Me encantan los personajes secundarios, tienen mucho carisma.",
+  "usuario": {
+    "_id": "nicohbr2",
+    "nombreUsuario": "Nico",
+    "email": "hubernicolas110@gmail.com",
+    "puntosXp": 1195
+  },
+  "publicacion": {
+    "_id": "P001",
+    "contenido": "The Witcher 3: Wild Hunt tiene una de las mejores historias que he jugado. Las decisiones realmente importan y el mundo abierto es increíble.",
+    "usuario": {
+      "_id": "pepito123",
+      "email": "pepito123@gmail.com",
+      "puntosXp": 1500,
+      "nombreUsuario": "Pepe"
+    }
+  }
+},
+{
+  "_id": "C010",
+  "contenido": "El juego online es bastante fluido, pocas veces tuve problemas de conexión.",
+  "usuario": {
+    "_id": "juancito129",
+    "nombreUsuario": "Juan",
+    "email": "juann@gmail.com",
+    "puntosXp": 450
+  },
+  "publicacion": {
+    "_id": "P005",
+    "contenido": "Red Dead Redemption 2 es una obra maestra. El detalle en el mundo y los personajes es increíble. Cada misión se siente única.",
+    "usuario": {
+      "_id": "juancito129",
+      "nombreUsuario": "Juan",
+      "email": "juann@gmail.com",
+      "puntosXp": 450
+    }
+  }
+},
+{
+  "_id": "C011",
+  "contenido": "Deberían agregar más mapas en el modo multijugador, se sienten repetitivos.",
+  "usuario": {
+    "_id": "pepito123",
+    "nombre": "Pepe",
+    "email": "pepito123@gmail.com",
+    "puntosXp": 1500
+  },
+  "publicacion": {
+    "_id": "P003",
+    "contenido": "Mortal Kombat 11 tiene unos gráficos impresionantes y los movimientos especiales son brutales. Es uno de los mejores juegos de peleas que he jugado.",
+    "usuario": {
+      "_id": "polbiancu",
+      "nombreUsuario": "Pablo",
+      "email": "pablo123@gmail.com",
+      "puntosXp": 4500
+    }
+  }
+},
+{
+  "_id": "C012",
+  "contenido": "El soporte post-lanzamiento ha sido excelente, siempre actualizan el juego.",
+  "usuario": {
+    "_id": "sofibolea",
+    "nombreUsuario": "Sofi",
+    "email": "sofia123@gmail.com",
+    "puntosXp": 3000
+  },
+  "publicacion": {
+    "_id": "P002",
+    "contenido": "Assassin's Creed Valhalla me ha encantado por su ambientación y el sistema de combate. Las batallas navales también están muy bien logradas.",
+    "usuario": {
+      "_id": "sofibolea",
+      "email": "sofia123@gmail.com",
+      "puntosXp": 3000,
+      "nombreUsuario": "Sofi"
+    }
+  }
+},
+{
+  "_id": "C013",
+  "contenido": "Las misiones secundarias están muy bien hechas, no se sienten como relleno.",
+  "usuario": {
+    "_id": "polbiancu",
+    "nombreUsuario": "Pablo",
+    "email": "pablo123@gmail.com",
+    "puntosXp": 4500
+  },
+  "publicacion": {
+    "_id": "P002",
+    "contenido": "Assassin's Creed Valhalla me ha encantado por su ambientación y el sistema de combate. Las batallas navales también están muy bien logradas.",
+    "usuario": {
+      "_id": "sofibolea",
+      "email": "sofia123@gmail.com",
+      "puntosXp": 3000,
+      "nombreUsuario": "Sofi"
+    }
+  }
+},
+{
+  "_id": "C014",
+  "contenido": "El nivel de detalle en los escenarios es impresionante, parece un mundo vivo.",
+  "usuario": {
+    "_id": "nicohbr2",
+    "nombreUsuario": "Nico",
+    "email": "hubernicolas110@gmail.com",
+    "puntosXp": 1195
+  },
+  "publicacion": {
+    "_id": "P005",
+    "contenido": "Red Dead Redemption 2 es una obra maestra. El detalle en el mundo y los personajes es increíble. Cada misión se siente única.",
+    "usuario": {
+      "_id": "juancito129",
+      "nombreUsuario": "Juan",
+      "email": "juann@gmail.com",
+      "puntosXp": 450
+    }
+  }
+},
+{
+  "_id": "C015",
+  "contenido": "La dificultad está bien balanceada, te reta pero no es frustrante.",
+  "usuario": {
+    "_id": "juancito129",
+    "nombreUsuario": "Juan",
+    "email": "juann@gmail.com",
+    "puntosXp": 450
+  },
+  "publicacion": {
+    "_id": "P001",
+    "contenido": "The Witcher 3: Wild Hunt tiene una de las mejores historias que he jugado. Las decisiones realmente importan y el mundo abierto es increíble.",
+    "usuario": {
+      "_id": "pepito123",
+      "email": "pepito123@gmail.com",
+      "puntosXp": 1500,
+      "nombreUsuario": "Pepe"
+    }
+  }
+}
+])
+
+//---------INSERT DE JUEGOS---------
+
+db.juegos.insertMany([
+	{
+		_id: "CODBO3", 
+		nombre: "Call Of Duty: Black Ops 3", 
+		detalle: "Call of Duty: Black Ops 3 es un juego de disparos en primera persona desarrollado por Treyarch y publicado por Activision en 2015. Ambientado en un futuro distópico en 2065, presenta tecnología avanzada como soldados cibernéticamente mejorados y armas futuristas. El juego incluye una campaña cooperativa para hasta cuatro jugadores, un modo multijugador competitivo, y el popular modo 'Zombies', con historias y misiones únicas. Su jugabilidad se centra en la movilidad mejorada, con habilidades especiales y movimientos acrobáticos como correr por las paredes y el uso de jetpacks."
+	},
+	{
+		_id: "W3", 
+		nombre: "The Witcher 3: Wild Hunt", 
+		detalle: "The Witcher 3: Wild Hunt es un juego de rol de mundo abierto desarrollado por CD Projekt Red y lanzado en 2015. El jugador asume el rol de Geralt de Rivia, un cazador de monstruos en un vasto mundo lleno de aventuras, personajes profundos y misiones secundarias. La historia sigue su búsqueda para encontrar a su hija adoptiva mientras el mundo está bajo la amenaza de la Cacería Salvaje, una fuerza mística. Ofrece combates dinámicos, exploración y decisiones que influyen en la trama."
+	},
+	{
+		_id: "ACV", 
+		nombre: "Assassin's Creed Valhalla", 
+		detalle: "Assassin's Creed Valhalla es un juego de rol y acción-aventura desarrollado por Ubisoft y lanzado en 2020. Ambientado en la era vikinga, el jugador toma el control de Eivor, un líder vikingo que debe establecer una colonia en Inglaterra mientras participa en batallas épicas. El juego combina combate brutal, sigilo y exploración de un vasto mundo abierto que abarca Noruega e Inglaterra. Incluye un sistema de desarrollo de asentamientos y toma de decisiones que afectan la historia."
+	},
+	{
+		_id: "MK11", 
+		nombre: "Mortal Kombat 11", 
+		detalle: "Mortal Kombat 11 es un juego de lucha desarrollado por NetherRealm Studios y publicado por Warner Bros. Interactive Entertainment en 2019. Es la última entrega de la serie Mortal Kombat y presenta una historia centrada en el control del tiempo, donde personajes clásicos y versiones alternativas se enfrentan. El juego ofrece un sistema de combate ajustado, movimientos especiales brutales y fatalities. También incluye modos en línea competitivos y un robusto sistema de personalización de personajes."
+	},
+	{
+		_id: "MC", 
+		nombre: "Minecraft", 
+		detalle: "Minecraft es un juego de construcción y aventuras desarrollado por Mojang y lanzado en 2011. Es un juego de mundo abierto en el que los jugadores pueden construir estructuras, explorar vastos paisajes, y recolectar recursos para sobrevivir. Minecraft permite jugar en varios modos, como supervivencia, creativo y aventura, y su mundo generado proceduralmente es prácticamente infinito. Además, tiene un gran enfoque en la creatividad y ha dado lugar a una activa comunidad de modders y creadores."
+	},
+	{
+		_id: "RDR2",  
+		nombre: "Red Dead Redemption 2",  
+		detalle: "Red Dead Redemption 2 es un juego de acción y aventura en mundo abierto desarrollado por Rockstar Games y lanzado en 2018. Ambientado en el Salvaje Oeste a finales del siglo XIX, el jugador asume el papel de Arthur Morgan, un forajido que forma parte de la banda de Dutch van der Linde. El juego presenta un vasto y detallado mundo abierto lleno de misiones, eventos aleatorios y personajes memorables. La historia se centra en la lealtad, el honor y la lucha por sobrevivir en una era cambiante."
+	}
+])
+
